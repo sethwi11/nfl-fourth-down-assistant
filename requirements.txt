@@ -1,0 +1,8 @@
+# Exact versions used to produce the reported results (Python 3.13).
+# scikit-learn MUST be 1.8.0: with 1.9.1 the gradient-boosting and win-probability results
+# shift slightly (verify_results.py then reports mismatches).
+scikit-learn==1.8.0
+pandas==3.0.6
+numpy==2.5.3
+matplotlib==3.11.2
+joblib==1.6.0
