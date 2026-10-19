@@ -1,0 +1,6 @@
+165,285 plays, 1,136 games, 5-fold grouped CV
+cp2_first  all 0.1676  last5min 0.0832  redzone 0.1646  10s jump 3.8 pts
+v1         all 0.1662  last5min 0.0837  redzone 0.1631  10s jump 0.3 pts
+v2a        all 0.1662  last5min 0.0836  redzone 0.1631  10s jump 0.2 pts
+v2b        all 0.1661  last5min 0.0828  redzone 0.1630  10s jump 0.5 pts
+v2c        all 0.1662  last5min 0.0837  redzone 0.1632  10s jump 0.3 pts

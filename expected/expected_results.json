@@ -1,0 +1,1383 @@
+{
+  "cleaning": {
+    "total_plays": 247284,
+    "fourth_down_rows": 21613,
+    "clean_rows": 20267,
+    "decision_counts": {
+      "punt": 10994,
+      "field_goal": 5100,
+      "go": 4173
+    }
+  },
+  "n_train_go": 3242,
+  "n_test_go": 931,
+  "n_test_go_games": 274,
+  "conversion": {
+    "cv_brier_2021_24_leave_one_season_out": {
+      "logistic_regression": 0.224,
+      "random_forest": 0.2275,
+      "gradient_boosting": 0.2276,
+      "situation_neutral_lr": 0.2235
+    },
+    "chosen_by_cv": "logistic_regression",
+    "test_2025": {
+      "constant_rate": {
+        "accuracy": 0.552,
+        "roc_auc": 0.5,
+        "brier": 0.248
+      },
+      "distance_bucket": {
+        "accuracy": 0.617,
+        "roc_auc": 0.643,
+        "brier": 0.229
+      },
+      "logistic_regression": {
+        "accuracy": 0.628,
+        "roc_auc": 0.649,
+        "brier": 0.228
+      },
+      "random_forest": {
+        "accuracy": 0.613,
+        "roc_auc": 0.648,
+        "brier": 0.229
+      },
+      "gradient_boosting": {
+        "accuracy": 0.633,
+        "roc_auc": 0.653,
+        "brier": 0.228
+      },
+      "situation_neutral_lr": {
+        "accuracy": 0.626,
+        "roc_auc": 0.647,
+        "brier": 0.228
+      },
+      "situation_neutral_lr_with_deep_fix": {
+        "accuracy": 0.626,
+        "roc_auc": 0.647,
+        "brier": 0.228
+      }
+    },
+    "chosen_vs_distance_bucket_bootstrap": {
+      "auc_diff_ci95": [
+        -0.008,
+        0.023
+      ],
+      "brier_diff_ci95": [
+        -0.004,
+        0.002
+      ],
+      "auc_diff_ci95_play_level": [
+        -0.009,
+        0.022
+      ],
+      "brier_diff_ci95_play_level": [
+        -0.004,
+        0.002
+      ],
+      "resampling_unit": "game",
+      "n_games": 274
+    },
+    "neutral_vs_distance_bucket_bootstrap": {
+      "auc_diff_ci95": [
+        -0.009,
+        0.019
+      ],
+      "brier_diff_ci95": [
+        -0.004,
+        0.001
+      ],
+      "auc_diff_ci95_play_level": [
+        -0.012,
+        0.019
+      ],
+      "brier_diff_ci95_play_level": [
+        -0.004,
+        0.002
+      ],
+      "resampling_unit": "game",
+      "n_games": 274
+    },
+    "slices_chosen_model": {
+      "1-2 yds": {
+        "n": 515,
+        "actual_rate": 0.652,
+        "model_mean_p": 0.642,
+        "bucket_mean_p": 0.658,
+        "brier_model": 0.226,
+        "brier_bucket": 0.228
+      },
+      "3-5 yds": {
+        "n": 234,
+        "actual_rate": 0.534,
+        "model_mean_p": 0.533,
+        "bucket_mean_p": 0.498,
+        "brier_model": 0.251,
+        "brier_bucket": 0.25
+      },
+      "6-9 yds": {
+        "n": 93,
+        "actual_rate": 0.312,
+        "model_mean_p": 0.39,
+        "bucket_mean_p": 0.363,
+        "brier_model": 0.211,
+        "brier_bucket": 0.213
+      },
+      "10+ yds": {
+        "n": 89,
+        "actual_rate": 0.27,
+        "model_mean_p": 0.199,
+        "bucket_mean_p": 0.207,
+        "brier_model": 0.2,
+        "brier_bucket": 0.201
+      },
+      "own half (yl>50)": {
+        "n": 256,
+        "actual_rate": 0.578,
+        "model_mean_p": 0.546,
+        "bucket_mean_p": 0.527,
+        "brier_model": 0.232,
+        "brier_bucket": 0.23
+      },
+      "opp half (yl<=50)": {
+        "n": 675,
+        "actual_rate": 0.542,
+        "model_mean_p": 0.548,
+        "bucket_mean_p": 0.552,
+        "brier_model": 0.227,
+        "brier_bucket": 0.229
+      }
+    }
+  },
+  "wp_model": {
+    "n_train_plays": 165285,
+    "v1": {
+      "n_plays_2025": 40371,
+      "brier_ours": 0.172,
+      "brier_nflverse_wp": 0.1715,
+      "brier_coinflip": 0.25,
+      "brier_ours_last5min": 0.0902,
+      "brier_nflverse_last5min": 0.0882,
+      "brier_ours_redzone": 0.1706,
+      "brier_nflverse_redzone": 0.17,
+      "n_last5min": 4690,
+      "n_redzone": 6314
+    },
+    "v2": {
+      "n_plays_2025": 40371,
+      "brier_ours": 0.1721,
+      "brier_nflverse_wp": 0.1715,
+      "brier_coinflip": 0.25,
+      "brier_ours_last5min": 0.0897,
+      "brier_nflverse_last5min": 0.0882,
+      "brier_ours_redzone": 0.1706,
+      "brier_nflverse_redzone": 0.17,
+      "n_last5min": 4690,
+      "n_redzone": 6314
+    }
+  },
+  "transitions": {
+    "ko_start_yardline_100": 70.0,
+    "punt_opp_start_by_bin": {
+      "30": 87.8,
+      "35": 88.07446808510639,
+      "40": 88.45414847161572,
+      "45": 87.60296540362438,
+      "50": 85.66290550070522,
+      "55": 83.98783185840708,
+      "60": 80.40465631929047,
+      "65": 77.28071602929211,
+      "70": 72.08409658617819,
+      "75": 67.25545851528385,
+      "80": 63.04314329738059,
+      "85": 56.47954545454545,
+      "90": 51.55696202531646,
+      "95": 46.055045871559635
+    },
+    "conv_median_gain": {
+      "1": 2.0,
+      "2": 6.0,
+      "3": 8.0,
+      "4": 8.0,
+      "5": 11.5,
+      "6": 11.5,
+      "7": 14.0,
+      "8": 15.0,
+      "9": 13.0,
+      "10": 19.0
+    },
+    "fg_make_p_at_40yd": 0.886,
+    "fg_make_p_at_55yd": 0.624
+  },
+  "recommendation_eval_2025": {
+    "final": {
+      "n_plays": 3973,
+      "n_games": 285,
+      "model_recommends": {
+        "go": 2096,
+        "punt": 1215,
+        "field_goal": 662
+      },
+      "rule_recommends": {
+        "punt": 2458,
+        "field_goal": 1055,
+        "go": 460
+      },
+      "actual": {
+        "punt": 2034,
+        "field_goal": 1017,
+        "go": 922
+      },
+      "agreement_model_vs_teams": 0.627,
+      "agreement_rule_vs_teams": 0.824,
+      "model_vs_rule_differ": 1847,
+      "margin_labels": {
+        "clear": 1354,
+        "toss_up": 1343,
+        "lean": 1276
+      },
+      "go_margin_labels": {
+        "toss_up": 737,
+        "clear": 682,
+        "lean": 677
+      },
+      "wpa_follow_model": {
+        "go": {
+          "n_followed": 802,
+          "n_not": 1294,
+          "wpa_followed": 1.29,
+          "wpa_not": -0.27
+        },
+        "field_goal": {
+          "n_followed": 548,
+          "n_not": 114,
+          "wpa_followed": 1.42,
+          "wpa_not": -1.36
+        },
+        "punt": {
+          "n_followed": 1142,
+          "n_not": 73,
+          "wpa_followed": 0.65,
+          "wpa_not": 0.64
+        }
+      },
+      "wpa_follow_rule": {
+        "go": {
+          "n_followed": 376,
+          "n_not": 84,
+          "wpa_followed": 1.69,
+          "wpa_not": 0.46
+        },
+        "field_goal": {
+          "n_followed": 873,
+          "n_not": 182,
+          "wpa_followed": 0.71,
+          "wpa_not": -0.05
+        },
+        "punt": {
+          "n_followed": 2024,
+          "n_not": 434,
+          "wpa_followed": 0.12,
+          "wpa_not": 1.31
+        }
+      },
+      "association": {
+        "engine": {
+          "weighted_gap_pp": 1.29,
+          "weighted_gap_ci95_game": [
+            0.8,
+            1.8
+          ],
+          "weighted_gap_ci95_play_level": [
+            0.81,
+            1.81
+          ],
+          "per_group_gap_pp": {
+            "go": 1.57,
+            "field_goal": 2.78,
+            "punt": 0.01
+          },
+          "per_group_gap_ci95_game": {
+            "go": [
+              0.94,
+              2.24
+            ],
+            "field_goal": [
+              1.57,
+              4.12
+            ],
+            "punt": [
+              -0.99,
+              0.88
+            ]
+          },
+          "matched_gap_pp": 1.06,
+          "matched_gap_ci95_game": [
+            0.38,
+            2.01
+          ],
+          "matched_share_of_plays_used": 0.567
+        },
+        "rule": {
+          "weighted_gap_pp": -0.39,
+          "weighted_gap_ci95_game": [
+            -1.1,
+            0.25
+          ],
+          "weighted_gap_ci95_play_level": [
+            -1.02,
+            0.28
+          ],
+          "per_group_gap_pp": {
+            "go": 1.23,
+            "field_goal": 0.76,
+            "punt": -1.19
+          },
+          "per_group_gap_ci95_game": {
+            "go": [
+              -0.64,
+              2.86
+            ],
+            "field_goal": [
+              -0.84,
+              2.27
+            ],
+            "punt": [
+              -2.04,
+              -0.37
+            ]
+          },
+          "matched_gap_pp": 0.15,
+          "matched_gap_ci95_game": [
+            -0.96,
+            0.72
+          ],
+          "matched_share_of_plays_used": 0.639
+        },
+        "engine_minus_rule": {
+          "weighted_gap_diff_ci95_game": [
+            0.83,
+            2.63
+          ],
+          "matched_gap_diff_ci95_game": [
+            -0.13,
+            2.73
+          ]
+        },
+        "n_games": 285,
+        "n_boot": 1000
+      },
+      "clear_go_calls": {
+        "threshold_pts": 3.0,
+        "n": 682,
+        "teams_went": 371,
+        "wpa_went": 2.27,
+        "wpa_kicked": -0.64
+      },
+      "lean_or_clear_go_calls": {
+        "threshold_pts": 1.0,
+        "n": 1359,
+        "teams_went": 564,
+        "wpa_went": 1.82,
+        "wpa_kicked": -0.42
+      },
+      "value_consistency_check": {
+        "go": {
+          "n": 922,
+          "mean_predicted": 0.36,
+          "mean_nflverse_after": 0.366,
+          "mae": 0.063
+        },
+        "field_goal": {
+          "n": 1017,
+          "mean_predicted": 0.549,
+          "mean_nflverse_after": 0.562,
+          "mae": 0.045
+        },
+        "punt": {
+          "n": 2034,
+          "mean_predicted": 0.478,
+          "mean_nflverse_after": 0.478,
+          "mae": 0.032
+        }
+      },
+      "sensitivity": {
+        "changed_when_score_time_neutralized": 1106,
+        "share": 0.278
+      }
+    },
+    "wp_fix_only": {
+      "n_plays": 3973,
+      "n_games": 285,
+      "model_recommends": {
+        "go": 2098,
+        "punt": 1213,
+        "field_goal": 662
+      },
+      "rule_recommends": {
+        "punt": 2458,
+        "field_goal": 1055,
+        "go": 460
+      },
+      "actual": {
+        "punt": 2034,
+        "field_goal": 1017,
+        "go": 922
+      },
+      "agreement_model_vs_teams": 0.627,
+      "agreement_rule_vs_teams": 0.824,
+      "model_vs_rule_differ": 1849,
+      "margin_labels": {
+        "clear": 1350,
+        "toss_up": 1339,
+        "lean": 1284
+      },
+      "go_margin_labels": {
+        "toss_up": 734,
+        "lean": 682,
+        "clear": 682
+      },
+      "wpa_follow_model": {
+        "go": {
+          "n_followed": 802,
+          "n_not": 1296,
+          "wpa_followed": 1.29,
+          "wpa_not": -0.27
+        },
+        "field_goal": {
+          "n_followed": 548,
+          "n_not": 114,
+          "wpa_followed": 1.42,
+          "wpa_not": -1.36
+        },
+        "punt": {
+          "n_followed": 1140,
+          "n_not": 73,
+          "wpa_followed": 0.65,
+          "wpa_not": 0.64
+        }
+      },
+      "wpa_follow_rule": {
+        "go": {
+          "n_followed": 376,
+          "n_not": 84,
+          "wpa_followed": 1.69,
+          "wpa_not": 0.46
+        },
+        "field_goal": {
+          "n_followed": 873,
+          "n_not": 182,
+          "wpa_followed": 0.71,
+          "wpa_not": -0.05
+        },
+        "punt": {
+          "n_followed": 2024,
+          "n_not": 434,
+          "wpa_followed": 0.12,
+          "wpa_not": 1.31
+        }
+      },
+      "association": {
+        "engine": {
+          "weighted_gap_pp": 1.29,
+          "weighted_gap_ci95_game": [
+            0.8,
+            1.79
+          ],
+          "weighted_gap_ci95_play_level": [
+            0.81,
+            1.81
+          ],
+          "per_group_gap_pp": {
+            "go": 1.56,
+            "field_goal": 2.78,
+            "punt": 0.01
+          },
+          "per_group_gap_ci95_game": {
+            "go": [
+              0.94,
+              2.25
+            ],
+            "field_goal": [
+              1.57,
+              4.12
+            ],
+            "punt": [
+              -0.99,
+              0.89
+            ]
+          },
+          "matched_gap_pp": 1.06,
+          "matched_gap_ci95_game": [
+            0.38,
+            2.01
+          ],
+          "matched_share_of_plays_used": 0.568
+        },
+        "rule": {
+          "weighted_gap_pp": -0.39,
+          "weighted_gap_ci95_game": [
+            -1.1,
+            0.25
+          ],
+          "weighted_gap_ci95_play_level": [
+            -1.02,
+            0.28
+          ],
+          "per_group_gap_pp": {
+            "go": 1.23,
+            "field_goal": 0.76,
+            "punt": -1.19
+          },
+          "per_group_gap_ci95_game": {
+            "go": [
+              -0.64,
+              2.86
+            ],
+            "field_goal": [
+              -0.84,
+              2.27
+            ],
+            "punt": [
+              -2.04,
+              -0.37
+            ]
+          },
+          "matched_gap_pp": 0.15,
+          "matched_gap_ci95_game": [
+            -0.96,
+            0.72
+          ],
+          "matched_share_of_plays_used": 0.639
+        },
+        "engine_minus_rule": {
+          "weighted_gap_diff_ci95_game": [
+            0.82,
+            2.63
+          ],
+          "matched_gap_diff_ci95_game": [
+            -0.13,
+            2.73
+          ]
+        },
+        "n_games": 285,
+        "n_boot": 1000
+      },
+      "clear_go_calls": {
+        "threshold_pts": 3.0,
+        "n": 682,
+        "teams_went": 371,
+        "wpa_went": 2.27,
+        "wpa_kicked": -0.64
+      },
+      "lean_or_clear_go_calls": {
+        "threshold_pts": 1.0,
+        "n": 1364,
+        "teams_went": 564,
+        "wpa_went": 1.82,
+        "wpa_kicked": -0.43
+      },
+      "value_consistency_check": {
+        "go": {
+          "n": 922,
+          "mean_predicted": 0.36,
+          "mean_nflverse_after": 0.366,
+          "mae": 0.063
+        },
+        "field_goal": {
+          "n": 1017,
+          "mean_predicted": 0.549,
+          "mean_nflverse_after": 0.562,
+          "mae": 0.045
+        },
+        "punt": {
+          "n": 2034,
+          "mean_predicted": 0.478,
+          "mean_nflverse_after": 0.478,
+          "mae": 0.032
+        }
+      },
+      "sensitivity": {
+        "changed_when_score_time_neutralized": 1109,
+        "share": 0.279
+      }
+    },
+    "checkpoint": {
+      "n_plays": 3973,
+      "n_games": 285,
+      "model_recommends": {
+        "go": 2048,
+        "punt": 1224,
+        "field_goal": 701
+      },
+      "rule_recommends": {
+        "punt": 2458,
+        "field_goal": 1055,
+        "go": 460
+      },
+      "actual": {
+        "punt": 2034,
+        "field_goal": 1017,
+        "go": 922
+      },
+      "agreement_model_vs_teams": 0.622,
+      "agreement_rule_vs_teams": 0.824,
+      "model_vs_rule_differ": 1829,
+      "margin_labels": {
+        "toss_up": 1363,
+        "lean": 1330,
+        "clear": 1280
+      },
+      "go_margin_labels": {
+        "toss_up": 714,
+        "lean": 703,
+        "clear": 631
+      },
+      "wpa_follow_model": {
+        "go": {
+          "n_followed": 771,
+          "n_not": 1277,
+          "wpa_followed": 1.41,
+          "wpa_not": -0.25
+        },
+        "field_goal": {
+          "n_followed": 571,
+          "n_not": 130,
+          "wpa_followed": 1.35,
+          "wpa_not": -1.99
+        },
+        "punt": {
+          "n_followed": 1131,
+          "n_not": 93,
+          "wpa_followed": 0.66,
+          "wpa_not": 0.87
+        }
+      },
+      "wpa_follow_rule": {
+        "go": {
+          "n_followed": 376,
+          "n_not": 84,
+          "wpa_followed": 1.69,
+          "wpa_not": 0.46
+        },
+        "field_goal": {
+          "n_followed": 873,
+          "n_not": 182,
+          "wpa_followed": 0.71,
+          "wpa_not": -0.05
+        },
+        "punt": {
+          "n_followed": 2024,
+          "n_not": 434,
+          "wpa_followed": 0.12,
+          "wpa_not": 1.31
+        }
+      },
+      "association": {
+        "engine": {
+          "weighted_gap_pp": 1.38,
+          "weighted_gap_ci95_game": [
+            0.77,
+            1.97
+          ],
+          "weighted_gap_ci95_play_level": [
+            0.84,
+            1.97
+          ],
+          "per_group_gap_pp": {
+            "go": 1.66,
+            "field_goal": 3.34,
+            "punt": -0.2
+          },
+          "per_group_gap_ci95_game": {
+            "go": [
+              1.01,
+              2.38
+            ],
+            "field_goal": [
+              2.1,
+              4.58
+            ],
+            "punt": [
+              -1.65,
+              1.04
+            ]
+          },
+          "matched_gap_pp": 1.1,
+          "matched_gap_ci95_game": [
+            0.49,
+            2.21
+          ],
+          "matched_share_of_plays_used": 0.563
+        },
+        "rule": {
+          "weighted_gap_pp": -0.39,
+          "weighted_gap_ci95_game": [
+            -1.1,
+            0.25
+          ],
+          "weighted_gap_ci95_play_level": [
+            -1.02,
+            0.28
+          ],
+          "per_group_gap_pp": {
+            "go": 1.23,
+            "field_goal": 0.76,
+            "punt": -1.19
+          },
+          "per_group_gap_ci95_game": {
+            "go": [
+              -0.64,
+              2.86
+            ],
+            "field_goal": [
+              -0.84,
+              2.27
+            ],
+            "punt": [
+              -2.04,
+              -0.37
+            ]
+          },
+          "matched_gap_pp": 0.15,
+          "matched_gap_ci95_game": [
+            -0.96,
+            0.72
+          ],
+          "matched_share_of_plays_used": 0.639
+        },
+        "engine_minus_rule": {
+          "weighted_gap_diff_ci95_game": [
+            0.89,
+            2.77
+          ],
+          "matched_gap_diff_ci95_game": [
+            0.06,
+            2.84
+          ]
+        },
+        "n_games": 285,
+        "n_boot": 1000
+      },
+      "clear_go_calls": {
+        "threshold_pts": 3.0,
+        "n": 631,
+        "teams_went": 341,
+        "wpa_went": 1.99,
+        "wpa_kicked": -0.77
+      },
+      "lean_or_clear_go_calls": {
+        "threshold_pts": 1.0,
+        "n": 1334,
+        "teams_went": 556,
+        "wpa_went": 1.88,
+        "wpa_kicked": -0.5
+      },
+      "value_consistency_check": {
+        "go": {
+          "n": 922,
+          "mean_predicted": 0.36,
+          "mean_nflverse_after": 0.366,
+          "mae": 0.064
+        },
+        "field_goal": {
+          "n": 1017,
+          "mean_predicted": 0.549,
+          "mean_nflverse_after": 0.562,
+          "mae": 0.045
+        },
+        "punt": {
+          "n": 2034,
+          "mean_predicted": 0.478,
+          "mean_nflverse_after": 0.478,
+          "mae": 0.031
+        }
+      },
+      "sensitivity": {
+        "changed_when_score_time_neutralized": 1138,
+        "share": 0.286
+      }
+    },
+    "full_conv": {
+      "n_plays": 3973,
+      "n_games": 285,
+      "model_recommends": {
+        "go": 2148,
+        "punt": 1164,
+        "field_goal": 661
+      },
+      "rule_recommends": {
+        "punt": 2458,
+        "field_goal": 1055,
+        "go": 460
+      },
+      "actual": {
+        "punt": 2034,
+        "field_goal": 1017,
+        "go": 922
+      },
+      "agreement_model_vs_teams": 0.615,
+      "agreement_rule_vs_teams": 0.824,
+      "model_vs_rule_differ": 1896,
+      "margin_labels": {
+        "clear": 1423,
+        "toss_up": 1314,
+        "lean": 1236
+      },
+      "go_margin_labels": {
+        "toss_up": 724,
+        "clear": 721,
+        "lean": 703
+      },
+      "wpa_follow_model": {
+        "go": {
+          "n_followed": 801,
+          "n_not": 1347,
+          "wpa_followed": 1.19,
+          "wpa_not": -0.3
+        },
+        "field_goal": {
+          "n_followed": 556,
+          "n_not": 105,
+          "wpa_followed": 1.43,
+          "wpa_not": -1.16
+        },
+        "punt": {
+          "n_followed": 1085,
+          "n_not": 79,
+          "wpa_followed": 0.7,
+          "wpa_not": 1.56
+        }
+      },
+      "wpa_follow_rule": {
+        "go": {
+          "n_followed": 376,
+          "n_not": 84,
+          "wpa_followed": 1.69,
+          "wpa_not": 0.46
+        },
+        "field_goal": {
+          "n_followed": 873,
+          "n_not": 182,
+          "wpa_followed": 0.71,
+          "wpa_not": -0.05
+        },
+        "punt": {
+          "n_followed": 2024,
+          "n_not": 434,
+          "wpa_followed": 0.12,
+          "wpa_not": 1.31
+        }
+      },
+      "association": {
+        "engine": {
+          "weighted_gap_pp": 0.98,
+          "weighted_gap_ci95_game": [
+            0.37,
+            1.59
+          ],
+          "weighted_gap_ci95_play_level": [
+            0.38,
+            1.54
+          ],
+          "per_group_gap_pp": {
+            "go": 1.49,
+            "field_goal": 2.6,
+            "punt": -0.86
+          },
+          "per_group_gap_ci95_game": {
+            "go": [
+              0.85,
+              2.16
+            ],
+            "field_goal": [
+              1.25,
+              3.96
+            ],
+            "punt": [
+              -2.4,
+              0.41
+            ]
+          },
+          "matched_gap_pp": 0.8,
+          "matched_gap_ci95_game": [
+            0.16,
+            1.73
+          ],
+          "matched_share_of_plays_used": 0.569
+        },
+        "rule": {
+          "weighted_gap_pp": -0.39,
+          "weighted_gap_ci95_game": [
+            -1.1,
+            0.25
+          ],
+          "weighted_gap_ci95_play_level": [
+            -1.02,
+            0.28
+          ],
+          "per_group_gap_pp": {
+            "go": 1.23,
+            "field_goal": 0.76,
+            "punt": -1.19
+          },
+          "per_group_gap_ci95_game": {
+            "go": [
+              -0.64,
+              2.86
+            ],
+            "field_goal": [
+              -0.84,
+              2.27
+            ],
+            "punt": [
+              -2.04,
+              -0.37
+            ]
+          },
+          "matched_gap_pp": 0.15,
+          "matched_gap_ci95_game": [
+            -0.96,
+            0.72
+          ],
+          "matched_share_of_plays_used": 0.639
+        },
+        "engine_minus_rule": {
+          "weighted_gap_diff_ci95_game": [
+            0.51,
+            2.31
+          ],
+          "matched_gap_diff_ci95_game": [
+            -0.35,
+            2.45
+          ]
+        },
+        "n_games": 285,
+        "n_boot": 1000
+      },
+      "clear_go_calls": {
+        "threshold_pts": 3.0,
+        "n": 721,
+        "teams_went": 378,
+        "wpa_went": 2.22,
+        "wpa_kicked": -0.7
+      },
+      "lean_or_clear_go_calls": {
+        "threshold_pts": 1.0,
+        "n": 1424,
+        "teams_went": 568,
+        "wpa_went": 1.71,
+        "wpa_kicked": -0.42
+      },
+      "value_consistency_check": {
+        "go": {
+          "n": 922,
+          "mean_predicted": 0.361,
+          "mean_nflverse_after": 0.366,
+          "mae": 0.063
+        },
+        "field_goal": {
+          "n": 1017,
+          "mean_predicted": 0.549,
+          "mean_nflverse_after": 0.562,
+          "mae": 0.045
+        },
+        "punt": {
+          "n": 2034,
+          "mean_predicted": 0.478,
+          "mean_nflverse_after": 0.478,
+          "mae": 0.032
+        }
+      },
+      "sensitivity": {
+        "changed_when_score_time_neutralized": 1037,
+        "share": 0.261
+      }
+    }
+  },
+  "nfl4th_benchmark": {
+    "available": true,
+    "n_matched": 3947,
+    "n_engine_plays": 3973,
+    "nfl4th_recommends": {
+      "go": 1634,
+      "punt": 1371,
+      "field_goal": 942
+    },
+    "agreement": {
+      "engine_vs_nfl4th": 0.753,
+      "rule_vs_nfl4th": 0.638,
+      "teams_vs_nfl4th": 0.735,
+      "engine_vs_teams_on_matched": 0.626
+    },
+    "crosstab_engine_rows_nfl4th_cols": {
+      "field_goal": {
+        "field_goal": 549,
+        "go": 79,
+        "punt": 19
+      },
+      "go": {
+        "field_goal": 375,
+        "go": 1393,
+        "punt": 320
+      },
+      "punt": {
+        "field_goal": 18,
+        "go": 162,
+        "punt": 1032
+      }
+    },
+    "association": {
+      "engine": {
+        "weighted_gap_pp": 1.17,
+        "weighted_gap_ci95_game": [
+          0.67,
+          1.68
+        ],
+        "weighted_gap_ci95_play_level": [
+          0.68,
+          1.67
+        ],
+        "per_group_gap_pp": {
+          "go": 1.57,
+          "field_goal": 2.17,
+          "punt": -0.06
+        },
+        "per_group_gap_ci95_game": {
+          "go": [
+            0.93,
+            2.25
+          ],
+          "field_goal": [
+            1.06,
+            3.43
+          ],
+          "punt": [
+            -1.1,
+            0.84
+          ]
+        },
+        "matched_gap_pp": 1.07,
+        "matched_gap_ci95_game": [
+          0.34,
+          2.01
+        ],
+        "matched_share_of_plays_used": 0.559
+      },
+      "nfl4th": {
+        "weighted_gap_pp": 0.92,
+        "weighted_gap_ci95_game": [
+          -0.24,
+          2.37
+        ],
+        "weighted_gap_ci95_play_level": [
+          -0.32,
+          2.35
+        ],
+        "per_group_gap_pp": {
+          "go": 1.99,
+          "field_goal": 1.68,
+          "punt": -0.88
+        },
+        "per_group_gap_ci95_game": {
+          "go": [
+            1.28,
+            2.69
+          ],
+          "field_goal": [
+            0.63,
+            2.72
+          ],
+          "punt": [
+            -5.29,
+            2.55
+          ]
+        },
+        "matched_gap_pp": 1.66,
+        "matched_gap_ci95_game": [
+          0.88,
+          2.73
+        ],
+        "matched_share_of_plays_used": 0.541
+      },
+      "rule": {
+        "weighted_gap_pp": -0.42,
+        "weighted_gap_ci95_game": [
+          -1.11,
+          0.2
+        ],
+        "weighted_gap_ci95_play_level": [
+          -1.1,
+          0.29
+        ],
+        "per_group_gap_pp": {
+          "go": 1.91,
+          "field_goal": 0.39,
+          "punt": -1.2
+        },
+        "per_group_gap_ci95_game": {
+          "go": [
+            0.43,
+            3.24
+          ],
+          "field_goal": [
+            -1.2,
+            1.93
+          ],
+          "punt": [
+            -2.0,
+            -0.38
+          ]
+        },
+        "matched_gap_pp": 0.16,
+        "matched_gap_ci95_game": [
+          -0.89,
+          0.76
+        ],
+        "matched_share_of_plays_used": 0.624
+      },
+      "engine_minus_nfl4th": {
+        "weighted_gap_diff_ci95_game": [
+          -1.22,
+          1.37
+        ],
+        "matched_gap_diff_ci95_game": [
+          -1.58,
+          0.34
+        ]
+      },
+      "engine_minus_rule": {
+        "weighted_gap_diff_ci95_game": [
+          0.74,
+          2.53
+        ],
+        "matched_gap_diff_ci95_game": [
+          -0.16,
+          2.74
+        ]
+      },
+      "nfl4th_minus_rule": {
+        "weighted_gap_diff_ci95_game": [
+          0.12,
+          3.19
+        ],
+        "matched_gap_diff_ci95_game": [
+          0.64,
+          3.24
+        ]
+      },
+      "n_games": 285,
+      "n_boot": 1000
+    },
+    "disagreements": {
+      "n": 973,
+      "engine_go_nfl4th_kick": 695,
+      "engine_kick_nfl4th_go": 241
+    }
+  },
+  "weak_cases": {
+    "train_go_attempts_own15_or_deeper": {
+      "n": 27,
+      "conversion_rate": 0.259
+    },
+    "deep_offset": {
+      "n": 27,
+      "observed_rate": 0.259,
+      "model_mean_p": 0.294,
+      "logit_offset": -0.060444751667728905,
+      "k": 50,
+      "test_2025_deep_attempts": {
+        "n": 8,
+        "actual_rate": 0.75,
+        "mean_p_before": 0.513,
+        "mean_p_after": 0.5
+      }
+    },
+    "checkpoint": {
+      "weak_case_1_4th5_own10_tied_Q2": {
+        "p_convert": 0.491,
+        "wp_go": 0.471,
+        "wp_punt": 0.467,
+        "margin": 0.004,
+        "recommendation": "go"
+      },
+      "weak_case_2_4th8_opp30_down4_2min": {
+        "wp_go": 0.231,
+        "wp_field_goal": 0.243,
+        "wp_punt": 0.143,
+        "margin": 0.012,
+        "recommendation": "field_goal"
+      },
+      "2025_go_calls_own15_or_deeper_ytg3to6": {
+        "n": 25,
+        "teams_punted": 23
+      },
+      "decision_grid_own_territory_tied_Q2_ytg_1_2_3_4_5_7_10": {
+        "own 10": [
+          "go",
+          "go",
+          "go",
+          "go",
+          "go",
+          "punt",
+          "punt"
+        ],
+        "own 20": [
+          "go",
+          "punt",
+          "punt",
+          "punt",
+          "punt",
+          "punt",
+          "punt"
+        ],
+        "own 30": [
+          "punt",
+          "go",
+          "punt",
+          "punt",
+          "punt",
+          "punt",
+          "punt"
+        ]
+      }
+    },
+    "wp_fix_only": {
+      "weak_case_1_4th5_own10_tied_Q2": {
+        "p_convert": 0.491,
+        "wp_go": 0.472,
+        "wp_punt": 0.468,
+        "margin": 0.004,
+        "recommendation": "go"
+      },
+      "weak_case_2_4th8_opp30_down4_2min": {
+        "wp_go": 0.213,
+        "wp_field_goal": 0.188,
+        "wp_punt": 0.1,
+        "margin": 0.025,
+        "recommendation": "go"
+      },
+      "2025_go_calls_own15_or_deeper_ytg3to6": {
+        "n": 26,
+        "teams_punted": 24
+      },
+      "decision_grid_own_territory_tied_Q2_ytg_1_2_3_4_5_7_10": {
+        "own 10": [
+          "go",
+          "go",
+          "go",
+          "go",
+          "go",
+          "punt",
+          "punt"
+        ],
+        "own 20": [
+          "go",
+          "punt",
+          "punt",
+          "punt",
+          "punt",
+          "punt",
+          "punt"
+        ],
+        "own 30": [
+          "go",
+          "go",
+          "go",
+          "punt",
+          "punt",
+          "punt",
+          "punt"
+        ]
+      }
+    },
+    "final": {
+      "weak_case_1_4th5_own10_tied_Q2": {
+        "p_convert": 0.476,
+        "wp_go": 0.47,
+        "wp_punt": 0.468,
+        "margin": 0.002,
+        "recommendation": "go"
+      },
+      "weak_case_2_4th8_opp30_down4_2min": {
+        "wp_go": 0.213,
+        "wp_field_goal": 0.188,
+        "wp_punt": 0.1,
+        "margin": 0.025,
+        "recommendation": "go"
+      },
+      "2025_go_calls_own15_or_deeper_ytg3to6": {
+        "n": 25,
+        "teams_punted": 23
+      },
+      "decision_grid_own_territory_tied_Q2_ytg_1_2_3_4_5_7_10": {
+        "own 10": [
+          "go",
+          "go",
+          "go",
+          "go",
+          "go",
+          "punt",
+          "punt"
+        ],
+        "own 20": [
+          "go",
+          "punt",
+          "punt",
+          "punt",
+          "punt",
+          "punt",
+          "punt"
+        ],
+        "own 30": [
+          "go",
+          "go",
+          "go",
+          "punt",
+          "punt",
+          "punt",
+          "punt"
+        ]
+      }
+    },
+    "wp_v1_curves": {
+      "opp_wp_1st_down_by_yards_from_goal": {
+        "2": 0.603,
+        "5": 0.602,
+        "10": 0.597,
+        "20": 0.586,
+        "52": 0.533,
+        "80": 0.473
+      },
+      "gap_5_vs_20_yards_pts": 1.6,
+      "opp_leading_by_1_vs_4_with_1m50_left_own30": [
+        0.72,
+        0.876
+      ]
+    },
+    "wp_v2_curves": {
+      "opp_wp_1st_down_by_yards_from_goal": {
+        "2": 0.613,
+        "5": 0.611,
+        "10": 0.599,
+        "20": 0.589,
+        "52": 0.532,
+        "80": 0.474
+      },
+      "gap_5_vs_20_yards_pts": 2.3,
+      "opp_leading_by_1_vs_4_with_1m50_left_own30": [
+        0.78,
+        0.92
+      ]
+    },
+    "punt_from_own_10_opp_start_yards_from_goal": 51.6,
+    "selection_bias_4th6_own28_tied_Q1": {
+      "model_predictions": {
+        "logistic_regression": 0.476,
+        "random_forest": 0.494,
+        "gradient_boosting": 0.465,
+        "situation_neutral_lr": 0.446
+      },
+      "league_rate_at_6_yards_2021_24": 0.379
+    }
+  }
+}

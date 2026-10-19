@@ -1,0 +1,3 @@
+Saved figures to results
+Saved paper figures to results
+Done in 58.5 s. Results in results/
